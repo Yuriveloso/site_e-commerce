@@ -1,0 +1,43 @@
+body{
+    background: rgb(112, 203, 219);
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+input,button{
+    padding: 5px;
+    margin: 5px;
+    font-weight: bold;
+    width: -webkit-fill-available;
+}
+
+button{
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info span {
+    color: white;
+    font-weight: bold;
+}
+
+.user-info button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.user-info button:hover{
+    background-color: #d32f2f;
+}

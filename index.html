@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styler.css">
+    <title>Pinturas Geek</title>
+</head>
+
+<body>
+    <header class="home">
+        <nav class="navegação">
+            <img src="img/Design_sem_nome-removebg-preview.png" alt="Logo de mestre" width="120" height="120">
+            <section class="barra-pesquisa">
+            <input id="campo-pesquisa" type="text" placeholder="Digite o nome do produto">
+            <button onclick="Pesquisar()">Pesquisar</button>
+            </section>
+        </nav>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            
+            <div class="menu-cadastro">
+                <button id="btn-menu">cadastro</button>
+                <div id= "menu-op"class="menu-op">
+                    <a href="ca_prod.html">Produto</a>
+                    <a href="ca_clien.html">Cliente</a>
+                </div>
+            </div>
+        </nav>
+        <div class="login">
+            <a href="login.html"><button>Login</button></a>
+        </div>
+    </header>
+    <section class="resultados-pesquisa" id="resultados-pesquisa">
+        <!--
+        <div class="item-resultado">
+            <img src="img/tenis_luffy.png" alt="tenis_luffy">
+            <h2>Tênis do Luffy</h2>
+            <p class="descricao-meta">Mostre seu espírito pirata com o Tênis do Luffy da nossa loja! Confortável e estiloso, é perfeito para os fãs que sonham em encontrar o One Piece.</p>
+        </div>
+        <div class="item-resultado">
+            <img src="img/moleton_naruto.png" alt="moleton_naruto">
+            <h2>Moleton do naruto</h2>
+            <p class="descricao-meta">Mostre seu amor pelo anime com nosso moletom exclusivo do Naruto! Confortável e estiloso, é perfeito para qualquer fã que busca se destacar com autenticidade ninja.</p>
+        </div>
+        <div class="item-resultado">
+            <img src="img/colar_do_pok.png" alt="colar_do_pok">
+            <h2>colar do Pokemon</h2>
+            <p class="descricao-meta">Capture o estilo e a nostalgia com o Colar Pokémon da nossa loja! Perfeito para fãs de todas as gerações, este colar é o acessório ideal para mostrar sua paixão pelo mundo Pokémon.</p>
+        </div>
+    -->
+    </section>
+
+    <script src="pesq.js"></script>
+    <script src="dados.js"></script>
+
+    <script>
+        //Verifica se o usuário está logado ao carregar a página
+        document.addEventListener('DOMContentLoaded',function () {
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+
+            if (user) {
+                const userEmail = user.email;
+                document.getElementById('login-section').style.display = 'nome';
+                document.getElementById('login-info').style.display = 'bloc';
+                document.getElementById('user-email').textContent = 'userEmail';
+
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userEmail', userEmail);
+            } else {
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('user-info').style.display = 'none';
+                localStorage.removeItem('userLoggedIn');
+                localStorage.removeItem('userEmail');
+            }
+        });
+
+        function logout() {
+            firebase.auth().signOut().then(() => {
+                window.location.reload();
+            }).catch((error) => {
+                console.error('Erro ao fazer logout:', error);
+            });
+        }
+    </script>
+    
+<script>
+    const btnMenu = document.getElementById("btn-menu");
+    const menuOpc = document.getElementById("menu-op");
+
+    btnMenu.addEventListener("click", (event) => {
+        event.stopPropagation(); // evita o fechamento imediato ao clicar no botão
+        menuOpc.style.display = menuOpc.style.display === "block" ? "none" : "block";
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!menuOpc.contains(event.target)) {
+            menuOpc.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+
+</html>  
